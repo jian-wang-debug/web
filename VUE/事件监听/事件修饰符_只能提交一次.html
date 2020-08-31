@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修饰符_只能提交一次</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        body{
+            margin: 0;
+        }
+        
+        div{
+            width: 100px;
+            cursor: pointer;
+        }
+
+        #grandFather{
+            background-color: deeppink;
+        }
+
+        #father{
+            background-color: pink;
+        }
+
+        #me{
+            background-color: hotpink;
+        }
+
+        #son{
+            background-color: #ff4225;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+
+     -->
+    <div id="content">
+        <div id="grandFather" @click="doc">
+            <!-- grandFatjer -->
+            {{message}}
+            <div id="father" @click.once="doc">
+                father
+                <div id="me" @click="doc">
+                    me
+                    <div id="son" @click="doc">
+                        son
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var content = new Vue({
+            el: '#content',
+            data: {
+                message: 'grandFatjer'  // 在这个程序中写不写都没有什么影响，因为没有什么数据需要传递
+            },
+            methods:{
+                doc: function(){
+                    this.id= event.currentTarget.id;
+                    console.log(this.id)
+                    alert(this.id)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

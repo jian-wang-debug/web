@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-else</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="div1">
+   
+        <button v-on:click="moyiba"> 摸一把彩票 10%的几率，建议一边点击一边心里默数，多少次了,站长表示最多点了40次才中奖，妈蛋~ </button>
+        <div v-if="show"> 中了500万！</div>
+        <div v-else>谢谢惠顾！</div> 
+           
+      </div>
+
+      <script>
+          var app = new Vue({
+            el: '#div1',
+            data:{
+                show:false
+            },
+            methods:{
+                /*
+                    当random随机出来的数字小于0.1时data里面的show变成true
+                */
+                moyiba: function(){
+                    var sum = Math.random()< 0.1
+                    this.show=sum // 这里的值为true
+                    console.log(sum)
+                }
+            }
+          })
+      </script>
+</body>
+</html>

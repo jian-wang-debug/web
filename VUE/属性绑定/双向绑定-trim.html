@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双向绑定-number</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        table tr td{
+            border:1px solid gray;
+            padding:10px;
+             
+        }
+        table{
+            border-collapse:collapse;
+            width:800px;
+            table-layout:fixed;
+        }
+        tr.firstLine{
+            background-color: lightGray;
+        }
+        </style>
+</head>
+<body>
+    <!-- 
+        trim 去掉前后的空白
+    -->
+    <div id="div1">
+     
+        <table align="center" >
+            <tr class="firstLine">
+                <td>视图类型</td>
+                <td>输入数据</td>
+                <td>绑定到Vue上的数值</td>
+            </tr>      
+            <tr>
+                <td>
+                    单行文本
+                </td>
+                <td>
+                    <input v-model.trim="input" placeholder="输入数据">
+                </td>
+                <td>
+                    <p>"{{ input }}"</p>  
+                </td>
+            </tr>
+        </table>
+       
+    </div>
+          
+    <script>
+        new Vue({
+            el:'#div1',
+            data:{
+                input:''
+            }
+        })
+    </script>
+</body>
+</html>

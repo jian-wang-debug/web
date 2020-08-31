@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修饰符_阻止冒泡</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="div1">
+  
+        <a href="http://12306.com" @click="jump" >正常的链接 http://12306.com</a>
+        
+        <br>
+        <a href="http://12306.com" @click.prevent="jump" >prevent jump()之后的链接 http://12306.com</a>
+        <br>
+        <a href="http://12306.com" @click.prevent >纯prevent之后的链接 http://12306.com</a>
+        
+        <br>
+        <br>
+        <form @submit="jump" action="http://12306.com">
+            <button type="submit">正常的form</button>
+        </form>
+        <form @submit.prevent="jump" action="http://12306.com">
+            <button type="submit">prevent jump()之后的form</button>
+        </form>
+        <form @submit.prevent action="http://12306.com">
+            <button type="submit">纯prevent之后的form</button>
+        </form>
+        
+      </div>
+         
+      <script>
+         
+      new Vue({
+            el: '#div1',
+            data: {
+            },
+            methods:{
+                jump:function(){
+                    alert("jump()函数被调用");
+                }
+            }
+          })
+         
+      </script>      
+</body>
+</html>

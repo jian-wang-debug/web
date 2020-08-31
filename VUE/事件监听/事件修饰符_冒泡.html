@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修饰符_冒泡</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        body{
+            margin: 0;
+        }
+        
+        div{
+            width: 100px;
+            cursor: pointer;
+        }
+
+        #grandFather{
+            background-color: green;
+        }
+
+        #father{
+            background-color: blue;
+        }
+
+        #me{
+            background-color: red;
+        }
+
+        #son{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+
+     -->
+    <div id="content">
+        <div id="grandFather" @click="doc">
+            grandFatjer
+            <div id="father" @click="doc">
+                father
+                <div id="me" @click="doc">
+                    me
+                    <div id="son" @click="doc">
+                        son
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var content = new Vue({
+            el: '#content',
+            data: {
+                id: ''
+            },
+            methods:{
+                doc: function(){
+                    this.id= event.currentTarget.id;
+                    alert(this.id)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
